@@ -1,0 +1,66 @@
+<!doctype html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?
+        family=Open+Sans:wght@700&family=Raleway:wght@400;600;700
+        &display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'repair_shop/css/styles.css' %}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>{% block body %}{% endblock %}</body>
+    <div class="client-body">
+        <div class="client-container">
+            <div class="client-card">
+                <div class="client1-top">
+                    <div class="client_z">
+                        <div class="top-client">
+                            <div class="client2">{{ client_card.name }}</div>
+                            <div class="client2">{{ client_card.phone_number }}</div>
+                        </div>
+                        <div class="top-master">
+                            Прийнято на діагностику
+                            <div class="client2">
+                                {{ client_card.master.first_name }} {{ client_card.master.last_name }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-card">
+                        <p class="client3">
+                           {{ client_card.brand }}
+                        </p>
+                        <p class="client3">
+                            {{ client_card.breakage }}
+                        </p>
+                        <p class="client3">
+                           комплектація : {{ client_card.package }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if client_card.is_fixed == True %}
+    <div class="warranty-body">
+        <div class="client-container">
+            <div class="client-card">
+                <div class="client1-bottom">
+                    <div class="bottom-card">
+                        <p class="client3">
+                            {{ client_card.break_fix }} / {{ client_card.out_date }}
+                        </p>
+                        <p class="client3">
+                            До сплати: {{ client_card.price }} грн.
+                        </p>
+                        <p class="client3">
+                            Гарантія {{ client_card.warranty }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <div class="client-slug">код клієнта для QR :{{ client_card.slug }}</div>
+        </div>
+    </div>
+    {% endif %}
+</html>

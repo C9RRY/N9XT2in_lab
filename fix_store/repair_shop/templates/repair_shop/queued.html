@@ -1,0 +1,70 @@
+{% extends 'repair_shop/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<body>
+
+<div class="bottom-body">
+    <div class="card-container">
+        {% for client_card in client_cards %}
+        <div class="card">
+            <div class="card1">
+                <div class="top-card">
+                    {{ client_card.name }}
+                </div>
+                <div class="bottom-card">
+                    <p class="first-p">
+                        {{ client_card.brand }}
+                    </p>
+                    <p class="second-p">
+                        {{ client_card.breakage }}
+                    </p>
+                </div>
+            </div>
+            <a href="{% url 'master-select' client_card.slug client_card.pk %}" class="btn-take">Передати майстру</a>
+        </div>
+        {% endfor %}
+
+        {% if page_obj.has_other_pages %}
+        <nav class="list-pages">
+            <ul>
+            <li class="page-num-begin">
+                 <a href="?page=1"><<< </a>
+            </li>
+            {% if page_obj.has_next %}
+            <li class="page-num-end">
+                <a href="?page={{ page_obj.next_page_number }}">></a>
+            </li>
+            {% else %}
+            <li class="page-num-end">
+                <a href="?page={{ page_obj.number }}">></a>
+            </li>
+            {% endif %}
+            {% for p in paginator.page_range %}
+            {% if page_obj.number == p %}
+            <li class="page-num page-num-selected">{{ p }}</li>
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 or p <= 5 and p >= page_obj.number|add:-2 or p >= paginator.num_pages|add:-4 and page_obj.number >= paginator.num_pages|add:-2 %}
+            <li class="page-num">
+                <a href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_previous %}
+            <li class="page-num-begin">
+                <a href="?page={{ page_obj.previous_page_number }}"><</a>
+            </li>
+            {% else %}
+            <li class="page-num-end">
+                <a href="?page={{ page_obj.number }}"><</a>
+            </li>
+            {% endif %}
+            <li class="page-num-end">
+                <a href="?page={{ paginator.num_pages }}"> >>></a>
+            </li>
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</div>
+</body>
+{% endblock %}

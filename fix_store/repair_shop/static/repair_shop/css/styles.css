@@ -1,0 +1,395 @@
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #6c7279;
+    background-color: gray;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+
+/*Container
+__________________*/
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/*Header
+__________________ */
+
+.header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid #515369;
+    padding: 35px 0;
+}
+
+
+/* Nav
+__________________ */
+
+.nav {
+    display: flex;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nav__link {
+    margin-right: 50px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    opacity: .75;
+    transition: opacity .2s;
+}
+
+.nav__link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.nav__log {
+    text-transform: uppercase;
+    color: #515369;
+    text-decoration: none;
+    opacity: .75;
+    transition: opacity .2s;
+}
+
+.nav__log:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+
+/* Card
+___________________*/
+.bottom-body{
+    width: 100%;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    z-index: 1000;
+}
+
+.card-container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card{
+    margin-down: 40px;
+    display: inline-grid;
+    width: 290px;
+    height: 350px;
+}
+
+.card1{
+    width: 280px;
+    background: #414146;
+    margin: 20px;
+}
+
+.top-card{
+    font-size: 22px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+
+.bottom-card{
+    position: relative;
+}
+
+.first-p{
+    font-size: 22px;
+    color: #fff;
+    height: 40px;
+}
+
+.second-p{
+    font-size: 13px;
+    color: #fff;
+    height: 50px;
+}
+
+.btn-take{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    width: 100px;
+    position: relative;
+    left: 30px;
+    background: grey;
+}
+
+.btn-take:hover{
+    color: white;
+    width: 100px;
+    font-size: 15px;
+    position: relative;
+    left: 30px;
+    transition: font-size .5s, color .5s;
+}
+
+
+/* 'About' classes
+___________________*/
+
+.info{
+    font-size: 20px;
+    color: black;
+}
+
+.contacts{
+    font-size: 30px;
+    color: black;
+    padding: 35px;
+    text-align: right;
+}
+
+.intro{
+    height: 1500px;
+}
+
+
+/*  'Form' classes
+__________________*/
+
+.form_container{
+    width: 800px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.form_login_container{
+    width: 400px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.form-label{
+    display: grid;
+    font-size: 20px;
+    color: black;
+}
+
+.form-input{
+    display: grid;
+    font-size: 20px;
+    color: black;
+}
+
+.form-error{
+    font-size: 18px;
+    color: white;
+}
+
+
+/* 'Client' classes
+____________________*/
+.client-body{
+    width: 100%;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    z-index: 1000;
+}
+
+.warranty-body{
+    width: 100%;
+    position: absolute;
+    top: 420px;
+    left: 0;
+    z-index: 1000;
+}
+
+.client-container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.client-card{
+    font-size: 22px;
+    color: black;
+    border-bottom: 1px solid #fff;
+}
+
+.client1-top{
+    width: 95%;
+    height: 280px;
+    background: #414146;
+    margin: 20px;
+}
+
+.client1-bottom{
+    width: 95%;
+    height: 200px;
+    background: #414146;
+    margin: 20px;
+}
+
+.client_z{
+	display: flex;
+	flex-direction: row;
+	height: 80px;
+}
+
+.top-client{
+    display: flex;
+    flex-direction:  column;
+    width: 50%;
+    font-size: 30px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.top-master{
+    display: flex;
+    flex-direction:  column;
+    width: 50%;
+    font-size: 30px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    text-align: right;
+}
+
+.client2{
+    height: 30px;
+}
+
+.client3{
+    height: 30px;
+    color: #fff;
+    font-size: 30px;
+}
+
+.client-slug{
+    font-size: 10px;
+    color: black;
+}
+
+
+/* 'Paginator' classes
+______________________*/
+.paginator-container{
+    display: inline;
+    width: 100%;
+    height: 350px;
+}
+
+.list-pages {
+	text-align: center;
+	margin: 0 0 20px 0;
+}
+
+.list-pages ul {
+    position: static;
+	margin: 20px 0 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.list-pages ul li {
+	display: inline-block;
+	margin: 0 20px 0 0;
+}
+
+.list-pages a {
+	color: #000;
+	font-size: 35px;
+	text-decoration: none;
+}
+
+.list-pages a:hover {
+	color: white;
+	transition: box-shadow .2s, color .5s;
+}
+
+.list-pages .page-num, .page-num-selected {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	padding:  0 0 0;
+	border: 1px solid #d0d0d0;
+	border-radius: 30px;
+}
+
+.list-pages .page-num:hover {
+	box-shadow: 3px 3px 1px #d0d0d0;
+	color: white;
+	transition: box-shadow .2s, color .5s;
+}
+
+.list-pages .page-num-selected {
+	border: none;
+	color: white;
+	font-size: 35px;
+
+
+}
+
+.list-pages .page-num-selected:hover {
+	box-shadow: none;
+
+}
+
+.page-num-begin{
+    position: static;
+}
+
+
+/* 'Cabinet' classes
+______________________*/
+.cabinet-body{
+    width: 100%;
+    position: absolute;
+    top: 120px;
+    left: 0;
+}
+
+.update-order{
+    display: inline ;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    left: 900px;
+    background: grey;
+}
+
+.update-order:hover{
+    text-decoration: underline;
+    width: 100px;
+    position: relative;
+    left: 900px;
+    transition: color .2s;
+}
+
+.client-take{
+    display: inline ;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    left: 30px;
+    background: grey;
+}
