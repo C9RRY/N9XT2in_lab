@@ -1,5 +1,5 @@
 menu = [
-    {'title': "Головна", 'url_name': "home"},
+    {'title': "Головна", 'url_name': "another"},
     {'title': "Контакти", 'url_name': "contacts"},
     {'title': "Черга", 'url_name': "queued"},
     {'title': "Прийомка", 'url_name': "new_order"},

@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '172.20.10.8',
+    '127.0.0.1'
 ]
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'repair_shop.apps.RepairShopConfig',
+    'radio_st.apps.RadioStConfig',
 ]
 
 MIDDLEWARE = [

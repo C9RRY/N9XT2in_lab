@@ -2,7 +2,7 @@ import sqlite3
 import re
 
 
-db_path = '/home/f1r980y/PycharmProjects/N9XT2/fix_store/db.sqlite3'
+db_path = '/home/c9rry/MyGit/N9XT2in_lab/fix_store/db.sqlite3'
 
 
 class DBOrder:

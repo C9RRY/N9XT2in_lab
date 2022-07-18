@@ -6,11 +6,13 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from repair_shop.forms import *
 from repair_shop.models import ClientCard
 from django.contrib.auth.mixins import LoginRequiredMixin
+import subprocess
 
 
 menu = [
     {'title': "Черга", 'url_name': "queued"},
     {'title': "Прийомка", 'url_name': "new_order"},
+    {'title': "Радіо", 'url_name': "radio_play"}
 ]
 
 
@@ -138,3 +140,7 @@ class AdminWorkCabinet(ListView):
 
     def get_queryset(self):
         return ClientCard.objects.filter(master=self.request.user, is_fixed=False)
+
+
+def radio(request):
+    return render(request, 'repair_shop/radio.html', {'title': 'Main', 'menu': menu})

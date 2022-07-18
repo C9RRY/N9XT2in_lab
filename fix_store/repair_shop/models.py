@@ -21,6 +21,7 @@ class ClientCard(models.Model):
     warranty = models.CharField(default='3 міс.', null=True, max_length=50, verbose_name='Гарантія')
     out_date = models.DateTimeField(null=True, max_length=50, verbose_name='Дата видачі')
 
+
     def __str__(self):
         return f"{self.in_date} {self.name}"
 

@@ -1,10 +1,11 @@
 from django.urls import path, include
 from fix_store import settings
 from repair_shop.views import *
-
+from radio_st.views import RadioList
 
 urlpatterns = [
     path('', index, name='home'),
+    path('radio/', RadioList.as_view(), name='radio_play'),
     path('contacts/', about, name='contacts'),
     path('queued/', Queued.as_view(), name='queued'),
     path('register/', RegisterUser.as_view(), name='register'),

@@ -1,18 +1,19 @@
 import openpyxl
 from openpyxl import load_workbook
 import textwrap
-
 from qr_code_make import create_qr
+import os
+
 
 static_path = "/home/f1r980y/PycharmProjects/N9XT2/desktop_app/static/"
 
 # cross-platform @decorator need
 # def order_print():
-#     os.startfile(f"{static_path}excel_files/examples/order.xlsx", "print")
+#     os.startfile(f"{static_path}excel_files/examples/order.xlsx", "another")
 #
 #
 # def warranty_print():
-#     os.startfile(f"{static_path}excel_files/examples/warranty.xlsx", "print")
+#     os.startfile(f"{static_path}excel_files/examples/warranty.xlsx", "another")
 
 
 def paste_to_order(model, name, phone_num, package, breakage, date, slug):
@@ -31,7 +32,6 @@ def paste_to_order(model, name, phone_num, package, breakage, date, slug):
     ws["C17"], ws["M18"] = short_date, short_date
     breakage = textwrap.fill(breakage, string_width).split("\n")
     ws["C12"], ws["L12"] = breakage[0], breakage[0]
-    #wb.save(f"{static_path}excel_files/examples/order.xlsx")
     wb.save(f"{static_path}excel_files/sawed_xlsx/{name}_{longest_date}.xlsx")
 
 

@@ -1,3 +1,5 @@
+another
+.idea
 fix_store/db.sqlite3
 fix_store/repair_shop/migrations/*.py
 !fix_store/repair_shop/migrations/__init__.py
