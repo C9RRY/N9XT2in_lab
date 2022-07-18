@@ -1,0 +1,20 @@
+{% extends 'radio_st/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<body>
+<div class="bottom-body">
+    <div class="card-container">
+        <form method="post">
+        {% csrf_token %}
+        {% for f in form %}
+        <label class="form-label" for="{{ f.id_for_label }}">{{f.label}}:</label>
+        <label class="form-label" for="{{ f.id_for_label }}">{{ f }}</label>
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+        <button type="submit">Зберегти</button>
+        </form>
+    </div>
+</div>
+</body>
+{% endblock %}

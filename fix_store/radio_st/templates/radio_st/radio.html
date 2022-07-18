@@ -1,0 +1,81 @@
+{% extends 'radio_st/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+
+<body>
+
+<div class="bottom-body">
+    <div class="card-container">
+        {% for radio in radios %}
+        <div class="card">
+            <div class="card1">
+                <div class="top-card">
+                    {{ radio.title }}
+                </div>
+                <div class="bottom-card">
+                    <p class="first-p">
+
+                    </p>
+                    <p class="second-p">
+                        {{ radio.url }}
+                    </p>
+                    <p class="second-p">
+                        <a href="radio_long_download/?play=True&url={{ radio.url }}" class="btn-take">Відтворити</a>
+                        <a>||</a>
+                        <a href="radio_long_download/?play=False" class="btn-take">стоп</a>
+                        <a href="{% url 'radio_edit'  radio.pk %}" class="btn-take1">Редагувати</a>
+                        <a href="{% url 'delete_st' radio.pk %}" class="btn-take2">Видалити</a>
+
+                    </p>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        {% endfor %}
+
+        {% if page_obj.has_other_pages %}
+        <nav class="list-pages">
+            <ul>
+            <li class="page-num-begin">
+                 <a href="?page=1"><<< </a>
+            </li>
+            {% if page_obj.has_next %}
+            <li class="page-num-end">
+                <a href="?page={{ page_obj.next_page_number }}">></a>
+            </li>
+            {% else %}
+            <li class="page-num-end">
+                <a href="?page={{ page_obj.number }}">></a>
+            </li>
+            {% endif %}
+            {% for p in paginator.page_range %}
+            {% if page_obj.number == p %}
+            <li class="page-num page-num-selected">{{ p }}</li>
+            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 or p <= 5 and p >= page_obj.number|add:-2 or p >= paginator.num_pages|add:-4 and page_obj.number >= paginator.num_pages|add:-2 %}
+            <li class="page-num">
+                <a href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_previous %}
+            <li class="page-num-begin">
+                <a href="?page={{ page_obj.previous_page_number }}"><</a>
+            </li>
+            {% else %}
+            <li class="page-num-end">
+                <a href="?page={{ page_obj.number }}"><</a>
+            </li>
+            {% endif %}
+            <li class="page-num-end">
+                <a href="?page={{ paginator.num_pages }}"> >>></a>
+            </li>
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</div>
+</body>
+{% endblock %}
