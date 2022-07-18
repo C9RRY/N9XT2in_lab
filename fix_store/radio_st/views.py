@@ -36,7 +36,6 @@ class RadioList(LoginRequiredMixin, ListView):
         return context
 
 
-
 class AddStation(LoginRequiredMixin, CreateView):
     form_class = AddRadioSt
     template_name = 'radio_st/new_station.html'
