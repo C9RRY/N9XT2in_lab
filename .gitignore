@@ -7,3 +7,4 @@ fix_store/radio_st/migrations/*.py
 !fix_store/radio_st/migrations/__init__.py
 fix_store/fix_store_cache/*.djcache
 desktop_app/static/excel_files/sawed_xlsx/*.xlsx
+
