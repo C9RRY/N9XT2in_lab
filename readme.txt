@@ -20,9 +20,9 @@ pip install qrcode
   
 
 ## Install
-$ git clone https://github.com/C9RRY/N9XT2.git
+$ git clone https://github.com/C9RRY/N9XT2in_lab.git
 
-$ cd N9XT2
+$ cd N9XT2in_lab
 
 $ python3 -m venv venv
 
