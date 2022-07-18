@@ -1,4 +1,3 @@
-import subprocess
 from radio_st.tmux_with_radio import radio_run_sh
 from django.shortcuts import render, redirect
 from radio_st.forms import *
@@ -36,8 +35,6 @@ class RadioList(LoginRequiredMixin, ListView):
         context['title'] = 'Список станцій'
         return context
 
-    # def get_queryset(self):
-    #     return reverse(Radios.objects.filter())
 
 
 class AddStation(LoginRequiredMixin, CreateView):
