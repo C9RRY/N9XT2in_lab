@@ -20,7 +20,7 @@ pip install qrcode
   
 
 ## Install
-$ git clone https://github.com/C9RRY/N9XT2in_lab.git
+$ git clone https://github.com/C9RRY/N9XT2in_lab
 
 $ cd N9XT2in_lab
 
@@ -43,4 +43,17 @@ $ python manage.py migrate
 $ python manage.py createsuperuser
 
 $ python manage.py runserver 0.0.0.0:8000
+
+sudo apt-get install pulseaudio jackd2 alsa-utils dbus-x11
+
+sudo apt install libasound2 alsa-utils ffmpeg
+
+sudo usermod -a -G audio myusername
+
+
+amixer
+
+amixer -c 0 set Master 20% on
+
+
 

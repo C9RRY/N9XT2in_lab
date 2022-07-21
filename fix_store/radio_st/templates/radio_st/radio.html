@@ -14,13 +14,13 @@
                 </div>
                 <div class="bottom-card">
                     <p class="first-p">
-
+                        {{ radio.ready_to_play }}
                     </p>
                     <p class="second-p">
                         {{ radio.url }}
                     </p>
                     <p class="second-p">
-                        <a href="radio_long_download/?play=True&url={{ radio.url }}" class="btn-take">Відтворити</a>
+                        <a href="radio_long_download/?play=True&id={{ radio.id }}" class="btn-take">Відтворити</a>
                         <a>||</a>
                         <a href="radio_long_download/?play=False" class="btn-take">стоп</a>
                         <a href="{% url 'radio_edit'  radio.pk %}" class="btn-take1">Редагувати</a>

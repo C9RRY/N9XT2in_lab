@@ -6,4 +6,4 @@ from .models import *
 class AddRadioSt(forms.ModelForm):
     class Meta:
         model = Radios
-        fields = ['title', 'url']
+        fields = ['title', 'url', 'ready_to_play']

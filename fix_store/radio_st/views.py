@@ -1,4 +1,4 @@
-from radio_st.tmux_with_radio import radio_run_sh
+from radio_st.tmux_with_radio.models import db_enable_station, db_disable_station
 from django.shortcuts import render, redirect
 from radio_st.forms import *
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -13,14 +13,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def radio_run(request):
     if request.GET:
         if request.GET.get('play') == "True":
-            url = request.GET.get('url')
-            radio_run_sh.play_st(f'{url}')
+            db_disable_station()
+            db_enable_station(request.GET.get('id'))
+        else:
+            db_disable_station()
             return redirect('radio')
-        elif request.GET.get('play') == "False":
-            radio_run_sh.play_st('')
-            return redirect('radio')
-        return render(request, 'radio_st/radio_run.html')
-    return render(request, 'radio_st/radio_run.html')
+        return redirect('radio')
+    return redirect('radio')
 
 
 class RadioList(LoginRequiredMixin, ListView):
@@ -55,7 +54,7 @@ class DeleteStation(LoginRequiredMixin, DeleteView):
 class RadioEdit(LoginRequiredMixin, UpdateView):
     model = Radios
     template_name = 'radio_st/edit_st.html'
-    fields = ['title', 'url']
+    fields = ['title', 'url', 'ready_to_play']
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
