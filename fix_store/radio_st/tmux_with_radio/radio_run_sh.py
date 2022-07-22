@@ -10,7 +10,7 @@ print(db_path)
 
 
 def play_st():
-    cycle = 1
+    cycle = 0
     tmux_run = 0
     while True:
         cycle += 1
@@ -23,7 +23,7 @@ def play_st():
         stations_info = cursor.fetchall()
         if stations_info:
             print(stations_info)
-            if stations_info[0][4] == 0:
+            if stations_info[0][4] == 0 or cycle == 1:
                 url = stations_info[0][2]
                 station_id = stations_info[0][0]
                 subprocess.call(['sh', f'{Path(__file__).resolve().parent}/radio.sh',
