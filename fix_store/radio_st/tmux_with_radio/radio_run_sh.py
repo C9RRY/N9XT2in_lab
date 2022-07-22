@@ -2,6 +2,7 @@ import subprocess
 import time
 import sqlite3
 from pathlib import Path
+from radio import cli
 
 current_path = Path(__file__).resolve().parent.parent.parent
 db_path = f'{Path(__file__).resolve().parent.parent.parent}/db.sqlite3'
