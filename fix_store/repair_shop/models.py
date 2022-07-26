@@ -21,12 +21,19 @@ class ClientCard(models.Model):
     warranty = models.CharField(default='3 міс.', null=True, max_length=50, verbose_name='Гарантія')
     out_date = models.DateTimeField(null=True, max_length=50, verbose_name='Дата видачі')
 
-
     def __str__(self):
         return f"{self.in_date} {self.name}"
 
     def get_absolute_url(self):
         return reverse('queued')
+
+
+class FilesAdmin(models.Model):
+    admin_upload = models.FileField(upload_to='media')
+    title = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.title
 
 
 def slug_generator(sender, instance, *args, **kwargs):

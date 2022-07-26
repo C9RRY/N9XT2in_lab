@@ -16,8 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('repair_shop.urls')),
     path('radio/', include('radio_st.urls')),
+
 ]
+
+
+# if settings.DEBUG:
+    # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

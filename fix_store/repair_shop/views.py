@@ -1,13 +1,14 @@
+import os.path
+from django.http import HttpResponse
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from repair_shop.forms import *
-from repair_shop.models import ClientCard
+from repair_shop.models import ClientCard, FilesAdmin
 from django.contrib.auth.mixins import LoginRequiredMixin
-import subprocess
-
+from repair_shop.print_checks import paste_to_order
 
 menu = [
     {'title': "Черга", 'url_name': "queued"},
@@ -17,15 +18,34 @@ menu = [
 
 
 def index(request):
-    return render(request, 'repair_shop/index.html', {'title': 'Main', 'menu': menu})
+    return render(request, 'repair_shop/index.html', {'title': 'Main', 'menu': menu, 'file': FilesAdmin.objects.all()})
 
 
 def about(request):
     return render(request, 'repair_shop/about.html', {'title': 'Contacts', 'menu': menu})
 
 
+def create_xlsx(request, slug, pk):
+    data = ClientCard.objects.filter(slug=slug).values_list()[0]
+    url = paste_to_order(data)
+    print(url)
+    return redirect(f'http://127.0.0.1:8000/{url}')
+
+
+# def download(request, path):
+#     file_path = os.path.join(settings.MEDIA_ROOT, path)
+#     if os.path.exists(file_path):
+#         with open(file_path, 'rb') as fh:
+#             response = HttpResponse(fh.read(), content_type="application/admin_upload")
+#             response['Content-Disposition'] = 'inline; filename='+os.path.basename(file_path)
+#             return response
+#     raise Http404
+
+
 # with class based view
 # LoginRequiredMixin used for protect against not auth user
+
+
 class Queued(LoginRequiredMixin, ListView):
     paginate_by = 12
     model = ClientCard

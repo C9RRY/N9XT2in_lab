@@ -2,7 +2,11 @@
 
 {% block title %}{{ title }}{% endblock %}
 {% block body %}
-<div class="intro">
-
+<div>
+    {% for post in file %}
+    <h2>{{ post.title }}</h2>
+    <a href="{{ post.admin_upload.url }}" download="{{ post.admin_upload.url }}">Download</a>
+    {% endfor %}
 </div>
+
 {% endblock %}

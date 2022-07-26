@@ -98,7 +98,8 @@ ___________________*/
     margin-down: 40px;
     display: inline-grid;
     width: 290px;
-    height: 350px;
+    height: 300px;
+    margin-bottom: 10px;
 }
 
 .card1{
@@ -127,6 +128,12 @@ ___________________*/
 .second-p{
     font-size: 13px;
     color: #fff;
+    height: 40px;
+}
+
+.button-p{
+    font-size: 13px;
+    color: #fff;
     height: 50px;
 }
 
@@ -147,6 +154,29 @@ ___________________*/
     position: relative;
     left: 30px;
     transition: font-size .5s, color .5s;
+}
+
+.choice-btn{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    width: 100px;
+    position: relative;
+    left: 10px;
+    background: grey;
+    margin: 5px;
+    border-radius: 4px
+}
+
+.choice-btn:hover{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    width: 100px;
+    position: relative;
+    left: 10px;
+    background: #507971;
+    margin: 5px;
 }
 
 
