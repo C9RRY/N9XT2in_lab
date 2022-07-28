@@ -5,7 +5,12 @@
 <body>
 
 <div class="bottom-body">
+
     <div class="card-container">
+        <form class="search" method="GET" action="" >
+            <input type="search" name="search">
+            <button  type="submit"> Search </button>
+        </form>
         {% for client_card in client_cards %}
         <div class="card">
             <div class="card1">
@@ -14,16 +19,16 @@
                 </div>
                 <div class="bottom-card">
                     <p class="first-p">
-                        {{ client_card.brand }}
+                        {{ client_card.phone_number }}
                     </p>
                     <p class="second-p">
                         {{ client_card.breakage }}
                     </p>
                     <p class="button-p">
-                        <button class="choice-btn" onclick="location.href='{% url 'master-select' client_card.slug client_card.pk %}'">Передати майстру</button>
+                        <button class="choice-btn" onclick="location.href='{% url 'master-select' client_card.slug client_card.pk %}'">Редагувати   __  </button>
                         <button class="choice-btn" onclick="location.href='{% url 'warranty-update' client_card.slug client_card.pk %}'">Створити гарантійку</button><br>
                         <button class="choice-btn" onclick="location.href='{% url 'create_xlsx' client_card.slug client_card.pk %}'">XLSX file</button>
-                        <button class="choice-btn" onclick="location.href='{% url 'master-select' client_card.slug client_card.pk %}'">Друк</button>
+                        <button class="choice-btn" onclick="location.href='{% url 'queued' %}'">Друк</button>
                     </p>
                 </div>
             </div>

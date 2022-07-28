@@ -12,7 +12,7 @@ class ClientCard(models.Model):
     package = models.CharField(max_length=250, verbose_name='Комплектація')
     breakage = models.CharField(max_length=250, verbose_name='Опис несправності')
     name = models.CharField(max_length=150, verbose_name='П.І.Б клієнта')
-    phone_number = models.CharField(max_length=50, verbose_name='Номер телефона клієнта')
+    phone_number = models.CharField(max_length=250, verbose_name='Номер телефона клієнта')
     in_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата прийому')
     master = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     slug = models.SlugField(null=True, max_length=200, unique=True)
@@ -42,4 +42,10 @@ def slug_generator(sender, instance, *args, **kwargs):
     instance.out_date = datetime.now()
 
 
+def phone_correct(sender, instance, *args, **kwargs):
+    print(instance.phone_number)
+    instance.phone_number = instance.phone_number.replace(' ', '')
+
+
+pre_save.connect(phone_correct, sender=ClientCard)
 pre_save.connect(slug_generator, sender=ClientCard)

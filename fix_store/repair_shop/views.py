@@ -1,5 +1,4 @@
-import os.path
-from django.http import HttpResponse
+from django.db.models import Q
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
@@ -28,8 +27,8 @@ def about(request):
 def create_xlsx(request, slug, pk):
     data = ClientCard.objects.filter(slug=slug).values_list()[0]
     url = paste_to_order(data)
-    print(url)
-    return redirect(f'http://127.0.0.1:8000/{url}')
+    redirect_url = reverse('home')
+    return redirect(f'{redirect_url}{url}')
 
 
 # def download(request, path):
@@ -59,7 +58,20 @@ class Queued(LoginRequiredMixin, ListView):
         return context
 
     def get_queryset(self):
-        return ClientCard.objects.filter(master=1)
+        result = super(Queued, self).get_queryset()
+        query = self.request.GET.get('search')
+
+        if query:
+            query_phone = query.replace(' ', '')
+            post_result = ClientCard.objects.filter(
+                Q(name__contains=query) | Q(phone_number__contains=query_phone)).order_by('id').reverse()
+            result = post_result
+        else:
+            result = ClientCard.objects.filter().order_by('id').reverse()
+        return result
+
+    # def get_queryset(self):
+    #     return ClientCard.objects.filter(master=1)
 
 
 class AddOrder(LoginRequiredMixin, CreateView):
@@ -76,7 +88,7 @@ class AddOrder(LoginRequiredMixin, CreateView):
 class CardUpdateView(LoginRequiredMixin, UpdateView):
     model = ClientCard
     template_name = 'repair_shop/card_update.html'
-    fields = ['master', 'name', 'breakage']
+    fields = ['brand',  'package', 'breakage', 'name', 'phone_number']
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)

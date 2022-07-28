@@ -50,6 +50,7 @@ sudo apt install libasound2 alsa-utils ffmpeg
 
 sudo usermod -a -G audio myusername
 
+$ sudo apt install pulseaudio jackd2 alsa-utils dbus-x11 ffmpeg vlc
 
 amixer
 
