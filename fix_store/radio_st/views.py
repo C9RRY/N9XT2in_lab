@@ -5,11 +5,6 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-# def radio_list(request):
-#     radios = Radios.objects.all()
-#     return render(request, 'radio_st/radio.html', {'radios': radios})
-
-
 def radio_run(request):
     if request.GET:
         if request.GET.get('play') == "True":

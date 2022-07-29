@@ -20,6 +20,8 @@ class ClientCard(models.Model):
     price = models.IntegerField(null=True, verbose_name='Ціна')
     warranty = models.CharField(default='3 міс.', null=True, max_length=50, verbose_name='Гарантія')
     out_date = models.DateTimeField(null=True, max_length=50, verbose_name='Дата видачі')
+    is_order_printed = models.BooleanField(default=False, verbose_name='orders_print')
+    is_warranty_printed = models.BooleanField(default=False, verbose_name='warranty_print')
 
     def __str__(self):
         return f"{self.in_date} {self.name}"

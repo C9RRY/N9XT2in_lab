@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from repair_shop.forms import *
 from repair_shop.models import ClientCard, FilesAdmin
 from django.contrib.auth.mixins import LoginRequiredMixin
-from repair_shop.print_checks import paste_to_order
+from repair_shop.print_checks import paste_to_order, paste_to_warranty
 
 menu = [
     {'title': "Черга", 'url_name': "queued"},
@@ -27,6 +27,16 @@ def about(request):
 def create_xlsx(request, slug, pk):
     data = ClientCard.objects.filter(slug=slug).values_list()[0]
     url = paste_to_order(data)
+    redirect_url = reverse('home')
+    return redirect(f'{redirect_url}{url}')
+
+
+def create_xlsx_warranty(request, slug, pk):
+    data = ClientCard.objects.filter(slug=slug).values_list()[0]
+    if data[1] is True:
+        url = paste_to_warranty(data)
+    else:
+        url = 'queued'
     redirect_url = reverse('home')
     return redirect(f'{redirect_url}{url}')
 

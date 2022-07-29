@@ -28,7 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '172.20.10.8',
-    '127.0.0.1'
+    '127.0.0.1',
+    '192.168.88.179'
 ]
 
 # Application definition
@@ -81,8 +82,12 @@ WSGI_APPLICATION = 'fix_store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'lab_db',
+        'USER': 'lab',
+        'PASSWORD': 'fjfj',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 

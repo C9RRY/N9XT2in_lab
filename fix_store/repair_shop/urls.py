@@ -11,6 +11,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', index, name='home'),
     path('create_xlsx/<slug:slug>/<int:pk>', create_xlsx, name='create_xlsx'),
+    path('create_warranty_xlsx/<slug:slug>/<int:pk>', create_xlsx_warranty, name='create_warranty_xlsx'),
     url(r'^download/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     path('radio/', RadioList.as_view(), name='radio_play'),
     path('contacts/', about, name='contacts'),

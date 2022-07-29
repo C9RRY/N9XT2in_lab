@@ -28,7 +28,7 @@
                         <button class="choice-btn" onclick="location.href='{% url 'master-select' client_card.slug client_card.pk %}'">Редагувати   __  </button>
                         <button class="choice-btn" onclick="location.href='{% url 'warranty-update' client_card.slug client_card.pk %}'">Створити гарантійку</button><br>
                         <button class="choice-btn" onclick="location.href='{% url 'create_xlsx' client_card.slug client_card.pk %}'">XLSX file</button>
-                        <button class="choice-btn" onclick="location.href='{% url 'queued' %}'">Друк</button>
+                        <button class="choice-btn" onclick="location.href='{% url 'create_warranty_xlsx' client_card.slug client_card.pk %}'">Друк</button>
                     </p>
                 </div>
             </div>
