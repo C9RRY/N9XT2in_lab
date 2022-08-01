@@ -41,20 +41,6 @@ def create_xlsx_warranty(request, slug, pk):
     return redirect(f'{redirect_url}{url}')
 
 
-# def download(request, path):
-#     file_path = os.path.join(settings.MEDIA_ROOT, path)
-#     if os.path.exists(file_path):
-#         with open(file_path, 'rb') as fh:
-#             response = HttpResponse(fh.read(), content_type="application/admin_upload")
-#             response['Content-Disposition'] = 'inline; filename='+os.path.basename(file_path)
-#             return response
-#     raise Http404
-
-
-# with class based view
-# LoginRequiredMixin used for protect against not auth user
-
-
 class Queued(LoginRequiredMixin, ListView):
     paginate_by = 12
     model = ClientCard
@@ -72,9 +58,15 @@ class Queued(LoginRequiredMixin, ListView):
         query = self.request.GET.get('search')
 
         if query:
-            query_phone = query.replace(' ', '')
+            query = query.replace(' ', '')
+            query_date = '*******'
+            if 'date' in query:
+                query_date = query[4:]
+                print(query_date)
             post_result = ClientCard.objects.filter(
-                Q(name__contains=query) | Q(phone_number__contains=query_phone)).order_by('id').reverse()
+                Q(name__contains=query) |
+                Q(phone_number__contains=query) |
+                Q(in_date__contains=query_date)).order_by('id').reverse()
             result = post_result
         else:
             result = ClientCard.objects.filter().order_by('id').reverse()

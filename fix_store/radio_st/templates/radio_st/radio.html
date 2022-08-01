@@ -14,7 +14,9 @@
                 </div>
                 <div class="bottom-card">
                     <p class="first-p">
-                        {{ radio.ready_to_play }}
+                        {% if radio.ready_to_play %}
+                        Відтворюється
+                        {% endif %}
                     </p>
                     <p class="second-p">
                         {{ radio.url }}

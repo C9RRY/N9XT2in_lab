@@ -17,7 +17,7 @@ def play_st():
         conn = psycopg2.connect(dbname='lab_db', user='lab', password='fjfj', host='localhost')
         cursor = conn.cursor()
         sql = 'SELECT * FROM radio_st_radios' \
-              ' WHERE ready_to_play = 1 '
+              ' WHERE ready_to_play = True '
         cursor.execute(sql)
         stations_info = cursor.fetchall()
         if stations_info:
@@ -30,7 +30,7 @@ def play_st():
                 conn = psycopg2.connect(dbname='lab_db', user='lab', password='fjfj', host='localhost')
                 cursor = conn.cursor()
                 sql = f""" UPDATE radio_st_radios
-                  SET play_now = 1
+                  SET play_now = True
                   WHERE id = {station_id }"""
                 cursor.execute(sql)
                 conn.commit()

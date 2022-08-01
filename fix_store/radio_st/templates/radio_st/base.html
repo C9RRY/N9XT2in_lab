@@ -17,7 +17,7 @@
                     <img src="{% static 'repair_shop/img/logo.png' %}" alt="">
                 </div>
                 <nav class="nav">
-                        <a class="nav__link" href="{% url 'home' %}">Головна</a>
+                        <a class="nav__link" href="{% url 'queued' %}">приймальна</a>
                         <a class="nav__link" href="{% url 'radio' %}">Радіо</a>
                         <a class="nav__link" href="{% url 'new_radio' %}">додати хвилю</a>
                     {% if request.user.is_authenticated and request.user.is_staff %}

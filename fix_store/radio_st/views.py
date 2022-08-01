@@ -36,7 +36,7 @@ class AddStation(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Прийомка'
+        context['title'] = 'Додати станцію'
         return context
 
 
